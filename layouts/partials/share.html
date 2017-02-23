@@ -1,7 +1,19 @@
+{{ if .Site.Params.share.enabled }}
 <aside class="p-share">
+  {{ if .Site.Params.share.services.hatena }}
   <a href="http://b.hatena.ne.jp/add?mode=confirm&url={{ .Permalink }}&title={{ .Title }}" title="Add to Hatena Bookmarks" class="ht" target="_blank" rel="nofollow"></a>
+  {{ end }}
+  {{ if .Site.Params.share.services.facebook }}
   <a href="http://www.facebook.com/sharer.php?u={{ .Permalink }}&t={{ .Title }}" title="Share on Facebook" class="fb" target="_blank" rel="nofollow"></a>
+  {{ end }}
+  {{ if .Site.Params.share.services.twitter }}
   <a href="http://twitter.com/intent/tweet?url={{ .Permalink }}&text={{ .Title }}&tw_p=tweetbutton" title="Share on Twitter" class="tw" target="_blank" rel="nofollow"></a>
+  {{ end }}
+  {{ if .Site.Params.share.services.gplus }}
   <a href="https://plus.google.com/share?url={{ .Permalink }}" title="Share on Google Plus" class="gp" target="_blank" rel="nofollow"></a>
+  {{ end }}
+  {{ if .Site.Params.share.services.line }}
   <a href="http://line.me/R/msg/text/?{{ .Title }} {{ .Permalink }}" title="Share on LINE" class="ln" target="_blank" rel="nofollow"></a>
+  {{ end }}
 </aside>
+{{ end }}
