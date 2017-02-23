@@ -66,6 +66,9 @@
     </footer>
 
     <a href="#" class="p-movetop" title="ページ上部へ戻る" rel="nofollow"></a>
+    {{ if .Site.Params.comments.disqus.enabled }}
+    <script id="dsq-count-scr" src="//{{ .Site.Params.comments.disqus.shortname }}.disqus.com/count.js" async></script>
+    {{ end }}
   </body>
 </html>
 
