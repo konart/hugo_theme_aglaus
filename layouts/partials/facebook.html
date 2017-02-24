@@ -1,0 +1,6 @@
+{{ if .Site.Params.comments.facebook.enabled }}
+<aside class="p-comments">
+    <div class="fb-comments" data-href="{{ .Permalink }}" data-width="756" data-numposts="5"></div>
+    <noscript>Please enable JavaScript to view the comments powered by Facebook.</noscript>
+</aside>
+{{ end }}
