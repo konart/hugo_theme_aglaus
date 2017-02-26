@@ -1,0 +1,13 @@
+<div class="header-wrapper">
+    <a href="{{ .Permalink }}" class="thumbnail" title="{{ .Title }}"></a>
+    <header class="article-header">
+        <div class="clearfix">
+            {{ if $.Scratch.Get "single" }}
+            <h1 class="title">{{ .Title }}</h1>
+            {{ else }}
+            <h2 class="title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            {{ end }}
+            {{ partial "facts.html" . }}
+        </div>
+    </header>
+</div>
