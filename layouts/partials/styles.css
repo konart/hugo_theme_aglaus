@@ -195,7 +195,6 @@ section>header span {
   margin-right: .25rem;
   font-size: .6rem;
   background-color: #eceff1;
-  font-weight: 700k
 }
 
 .p-share a.ht { color: #00a4de; }
@@ -272,19 +271,6 @@ article .title a {
 
 article .header-wrapper {
   margin-bottom: 1.5rem;
-}
-
-article .thumbnail {
-  display: block;
-  background-position: center;
-  background-size: cover;
-  background-image: url({{ .Site.BaseURL }}images/default.jpg);
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
-  box-shadow: 0 0 3px 0 #333 inset;
-  float: left;
-  margin-right: 1rem;
 }
 
 article .summary {

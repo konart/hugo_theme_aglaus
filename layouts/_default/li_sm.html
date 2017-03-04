@@ -1,9 +1,12 @@
 <article class="li sm article-{{ .Source.Path | md5 }}">
   <div class="header-wrapper">
-    <a href="{{ .Permalink }}" class="thumbnail" title="{{ .Title }}"></a>
     <header class="article-header">
       <div class="clearfix">
+        {{ if ne "quote" .Section }}
         <h2 class="title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        {{ else }}
+        <h2 class="title">{{ .Title }}</h2>
+        {{ end }}
         {{ partial "facts.html" . }}
       </div>
     </header>

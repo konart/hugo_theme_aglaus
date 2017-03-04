@@ -1,6 +1,21 @@
 <ul class="p-facts">
     <li><time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05JST" }}">{{ .Lastmod.Format ( .Site.Params.dateformat | default "Jan 2, 2006") }}</time></li>
-    {{ with .Section }}<li><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/">{{ . }}</a></li>{{ end }}
+    {{ $.Scratch.Add "icon" "" }}
+    {{ with .Section }}
+    {{ if eq . "post" }}
+    {{ $.Scratch.Set "icon" "fa-file-text-o" }}
+    {{ end }}
+    {{ if eq . "link" }}
+    {{ $.Scratch.Set "icon" "fa-external-link" }}
+    {{ end }}
+    {{ if eq . "video" }}
+    {{ $.Scratch.Set "icon" "fa-youtube" }}
+    {{ end }}
+    {{ if eq . "quote" }}
+    {{ $.Scratch.Set "icon" "fa-quote-right" }}
+    {{ end }}
+    <li><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/"><i class="fa {{ $.Scratch.Get "icon" }} fa-fw" aria-hidden="true"></i></a></li>
+    {{ end }}
     {{ if .Params.tags }}<li>TAGGED:</li>{{ range .Params.tags }}<li><a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a></li>{{ end }}{{ end }}
     {{ if eq (getenv "HUGO_ENV") "DEV" }}
     <li>{{ .WordCount }} Words</li>

@@ -1,10 +1,23 @@
 <article class="single article-{{ .Source.Path | md5 }}">
-  {{ $.Scratch.Add "single" true }}
   {{ partial "header_wrapper.html" . }}
 
   {{ partial "share.html" . }}
-
-  <div class="article-body">{{ .Content }}</div>
+  <div class="article-body">
+  {{ if eq .Section "post" }}
+  {{ .Content }}
+  {{ end }}
+  {{ if eq .Section "video" }}
+  {{ if and (isset .Params "source") (eq .Params.source "youtube") }}
+  <p><iframe width="853" height="480" src="https://www.youtube.com/embed/{{ .Params.link }}" frameborder="0" allowfullscreen></iframe></p>
+  {{ end }}
+  {{ if and (isset .Params "source") (eq .Params.source "vimeo") }}
+  <p><iframe src="https://player.vimeo.com/video/{{ .Params.link }}" width="853" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></p>
+  {{ end }}
+  {{ if not (isset .Params "source") }}
+  {{ .Content }}
+  {{ end }}
+  {{ end }}
+  </div>
 
   {{ partial "share.html" . }}
 

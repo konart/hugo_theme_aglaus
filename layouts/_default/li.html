@@ -1,5 +1,15 @@
 <article class="li article-{{ .Source.Path | md5 }}">
   {{ partial "header_wrapper.html" . }}
+  {{ if eq .Section "post" }}
   <div class="article-body summary">{{ .Summary }}</div>
   <footer class="readmore"><a href="{{ .Permalink }}">READ MORE</a></footer>
+  {{ end }}
+  {{ if eq .Section "video" }}
+  {{ if and (isset .Params "source") (eq .Params.source "youtube") }}
+  <iframe width="853" height="480" src="https://www.youtube.com/embed/{{ .Params.link }}" frameborder="0" allowfullscreen></iframe>
+  {{ end }}
+  {{ if and (isset .Params "source") (eq .Params.source "vimeo") }}
+  <iframe src="https://player.vimeo.com/video/{{ .Params.link }}" width="853" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  {{ end }}
+  {{ end }}
 </article>

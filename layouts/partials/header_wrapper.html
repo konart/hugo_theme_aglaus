@@ -1,13 +1,21 @@
 <div class="header-wrapper">
-    <a href="{{ .Permalink }}" class="thumbnail" title="{{ .Title }}"></a>
     <header class="article-header">
         <div class="clearfix">
-            {{ if $.Scratch.Get "single" }}
-            <h1 class="title">{{ .Title }}</h1>
-            {{ else }}
+            {{ if $.IsPage }}
+            {{ if in "post video" .Section }}
             <h2 class="title"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            {{ end }}
+            {{ if eq "link" .Section }}
+            <h2 class="title"><a href="{{ .Params.link }}">{{ .Title }}</a></h2>
+            {{ end }}
+            {{ if eq "quote" .Section }}
+            <h2 class="title">{{ .Title }}</h2>
+            {{ end }}
+            {{ else }}
+            <h2 class="title">{{ .Title }}</h2>
             {{ end }}
             {{ partial "facts.html" . }}
         </div>
     </header>
+
 </div>
